@@ -7,6 +7,13 @@
     "jsx": "react-jsx",
     "allowJs": true,
     "moduleResolution": "node",
+    // Добавляем абсолютные импорты
+    "baseUrl": ".",
+    "paths": {
+      "*": [
+        "./src/*"
+      ]
+    },
     "esModuleInterop": true,
     "allowSyntheticDefaultImports": true
   },
