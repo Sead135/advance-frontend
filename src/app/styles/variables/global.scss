@@ -1,5 +1,5 @@
 :root {
-  --font-family-main: Consolas, "Time New Roman", Serif;
+  --font-family-main: Consolas, "Century Gothic", Serif;
 
   --font-size-m: 16px;
   --font-line-m: 24px;
@@ -10,4 +10,7 @@
   --font-l: var(--font-size-l) / var(--font-line-l) var(--font-family-main);
 
   --navbar-height: 50px;
+
+  --sidebar-width: 300px;
+  --sidebar-width-collapsed: 80px;
 }
