@@ -12,12 +12,32 @@ export function buildLoaders(options: BuildOptions): RuleSetRule[] {
     ],
   };
 
+  const babelLoader = {
+    test: /\.(js|jsx|tsx)$/,
+    exclude: /node_modules/,
+    use: {
+      loader: 'babel-loader',
+      options: {
+        presets: ['@babel/preset-env'],
+        plugins: [
+          [
+            'i18next-extract',
+            {
+              locales: ['ru', 'en'],
+              keyAsDefaultValue: true,
+            },
+          ],
+        ],
+      },
+    },
+  };
+
   const svgLoader = {
     test: /\.svg$/,
     use: ['@svgr/webpack'],
   };
 
-  const cssLoaders = {
+  const cssLoader = {
     test: /\.s[ac]ss$/i,
     use: [
       options.isDev ? 'style-loader' : MiniCssExtractPlugin.loader,
@@ -35,10 +55,18 @@ export function buildLoaders(options: BuildOptions): RuleSetRule[] {
       'sass-loader',
     ],
   };
+
   const typescriptLoader = {
     test: /\.tsx?$/,
     use: 'ts-loader',
     exclude: /node_modules/,
   };
-  return [fileLoader, svgLoader, typescriptLoader, cssLoaders];
+
+  return [
+    fileLoader,
+    svgLoader,
+    babelLoader,
+    typescriptLoader,
+    cssLoader,
+  ];
 }
